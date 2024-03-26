@@ -6,8 +6,9 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #CBD8E1;
+    font-family: 'Poppins', sans-serif; /* Changement de la police */
+    background-image: url("../images/background.jpg");
+    background-size: cover;
     color: #333;
     margin: 0;
     padding: 0;
@@ -20,22 +21,16 @@ body {
 }
 
 .logo {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Pacifico', cursive; /* Changement de la police */
     font-size: 40px;
-    color: #000;
+    color: #fff; /* Couleur du texte du titre */
     margin-bottom: 10px;
     text-align: center; /* Centrer le texte */
 }
 
-.separation {
-    height: 10px; /* Hauteur plus grande pour la bande */
-    background-color: #011F37; /* Couleur de la bande */
-    margin-bottom: 20px;
-}
 
 .menu {
     text-align: center;
-    margin-bottom: 20px;
     background-color: #89A4B6; /* Couleur de fond de la bande de liens */
     padding: 10px 0; /* Ajout de padding pour l'espace autour des liens */
 }
@@ -43,11 +38,16 @@ body {
 .menu ul {
     list-style-type: none;
     padding: 0;
+    display: flex;
+    justify-content: center; /* Centrer les éléments */
 }
 
 .menu ul li {
-    display: inline;
     margin-right: 20px;
+}
+
+.menu ul li:last-child {
+    margin-right: 0; /* Supprimer la marge à droite du dernier élément */
 }
 
 .menu ul li a {
@@ -62,7 +62,7 @@ body {
 }
 
 .login-box {
-    background-color: #89A4B6;
+    background-color: rgba(137, 164, 182, 0.9); /* Couleur de fond transparente */
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -72,7 +72,7 @@ body {
 }
 
 .login-box h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif; /* Changement de la police */
     font-size: 30px;
     margin-bottom: 20px;
 }
@@ -89,11 +89,12 @@ body {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.7); /* Couleur de fond transparente pour les champs */
 }
 
 .login-form input[type="text"],
 .login-form input[type="password"] {
-    background-color: #f9f9f9;
+    background-color: rgba(255, 255, 255, 0.7); /* Couleur de fond transparente pour les champs */
 }
 
 .login-form button {
@@ -105,6 +106,5 @@ body {
 }
 
 .login-form button:hover {
-    background-color: #966c4a;
+    background-color: #89A4B6;
 }
-
