@@ -1,0 +1,110 @@
+/* Reset des styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #CBD8E1;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    color: #000;
+    margin-bottom: 10px;
+    text-align: center; /* Centrer le texte */
+}
+
+.separation {
+    height: 10px; /* Hauteur plus grande pour la bande */
+    background-color: #011F37; /* Couleur de la bande */
+    margin-bottom: 20px;
+}
+
+.menu {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #89A4B6; /* Couleur de fond de la bande de liens */
+    padding: 10px 0; /* Ajout de padding pour l'espace autour des liens */
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #FFF; /* Couleur du texte des liens */
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.menu ul li a:hover {
+    color: #333; /* Couleur du texte des liens au survol */
+}
+
+.login-box {
+    background-color: #89A4B6;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-form input,
+.login-form button {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    background-color: #f9f9f9;
+}
+
+.login-form button {
+    background-color: #011F37;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-form button:hover {
+    background-color: #966c4a;
+}
+
