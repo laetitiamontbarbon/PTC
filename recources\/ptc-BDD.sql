@@ -21,8 +21,8 @@ CREATE TABLE Clickshare (
     FOREIGN KEY (salle_id) REFERENCES Salle(salle_id)
 );
 
-CREATE TABLE Etudiant (
-    etudiant_id INT PRIMARY KEY,
+CREATE TABLE Utilisateur  (
+    Utilisateur _id INT PRIMARY KEY,
     nom VARCHAR(255),
     prenom VARCHAR(255),
     mail VARCHAR(255),
