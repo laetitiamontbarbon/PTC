@@ -20,8 +20,9 @@ body {
     padding: 20px;
 }
 
+
 .logo {
-    font-family: 'Pacifico', cursive; /* Changement de la police */
+    font-family: 'Poppins', sans-serif; /* Changement de la police */
     font-size: 40px;
     color: #fff; /* Couleur du texte du titre */
     margin-bottom: 10px;
@@ -31,7 +32,9 @@ body {
 
 .menu {
     text-align: center;
-    background-color: #89A4B6; /* Couleur de fond de la bande de liens */
+    background-color: rgba(137, 164, 182, 0.9); /* Couleur de fond de la bande de liens */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     padding: 10px 0; /* Ajout de padding pour l'espace autour des liens */
 }
 
@@ -63,12 +66,12 @@ body {
 
 .login-box {
     background-color: rgba(137, 164, 182, 0.9); /* Couleur de fond transparente */
-    padding: 40px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 25px auto 0;
 }
 
 .login-box h2 {

@@ -10,13 +10,13 @@
 
 <body>
     <div class="container">
-        <div class="logo">Acupure</div>
+        <div class="logo">Connected Locker</div>
         <div class="separation"></div>
 
         <div class="menu">
             <ul>
                 <li><a href="gereracces.html">Gerer les accès</a></li>
-                <li><a href="creationcompte.html">Création de compte</a></li>
+                <li><a href="/src/html/ creationcompte.html">Création de compte</a></li>
                 <li><a href="listeacces.html">Liste des accès</a></li>
             </ul>
         </div>
@@ -26,14 +26,15 @@
             <h2>Création de compte</h2>
             <div class="login-form">
                 <form action="#" method="post">
-                    <input type="text" placeholder="Nom">
-                    <input type="text" placeholder="Prenom">
-                    <input type="text" placeholder="adresse mail">
-                    <input type="text" placeholder="Tag Nfc">
+                    <input type="text" placeholder="Nom" required> <!-- Champ Nom requis -->
+                    <input type="text" placeholder="Prenom" required> <!-- Champ Prénom requis -->
+                    <input type="email" placeholder="adresse mail" required> <!-- Champ Email requis avec type "email" pour validation -->
+                    <input type="text" placeholder="Tag Nfc" required> <!-- Champ Tag NFC requis -->
                     <button>Création compte</button>
                 </form>
             </div>
         </div>
+        
 
 
     </div>
