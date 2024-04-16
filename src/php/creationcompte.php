@@ -1,41 +1,63 @@
 <?php
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+require_once 'config.php';
 
-// Connexion à la base de données
-$host =  $_ENV['DB_HOST'];  // Adresse du serveur MySQL
-$user = $_ENV['DB_USER'];  // Nom d'utilisateur MySQL
-$password = $_ENV['DB_PASSWORD'];  // Mot de passe MySQL
-$database = $_ENV['DB_DB'];  // Nom de la base de données
+$titre = 'Connected Locker';
+$menuItems = [
+    ['href' => 'src/php/creationcompte.php', 'text' => 'Créer compte'],
+    ['href' => 'src/php/utilisateur.php', 'text' => 'Utilisateurs'],
+    ['href' => 'src/php/salles.php', 'text' => 'Salles']
+];
 
-// Création de la connexion
-$conn = new mysqli($host, $user, $password, $database);
 
-// Vérifier la connexion
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+
+// Initialiser la variable de message
+$message = '';
+
+// Si le formulaire est soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupérer les valeurs du formulaire
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $mail = $_POST['mail'];
+    $tagNFC = $_POST['tagNFC'];
+
+    // Connexion à la base de données (à remplacer avec vos informations de connexion)
+    $host = $_ENV['DB_HOST'];  // Adresse du serveur MySQL
+    $user = $_ENV['DB_USER'];  // Nom d'utilisateur MySQL
+    $password = $_ENV['DB_PASSWORD'];  // Mot de passe MySQL
+    $database = $_ENV['DB_DB'];  // Nom de la base de données
+    $port = 5433;
+
+    try {
+        $dsn = "pgsql:host=$host;port=$port;dbname=$database;user=$user;password=$password";
+        $dbh = new PDO($dsn);
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Préparer la requête d'insertion
+        $stmt = $dbh->prepare("INSERT INTO utilisateurs (nom, prenom, mail, tagNFC) VALUES (:nom, :prenom, :mail, :tagNFC)");
+
+        // Bind des valeurs
+        $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':prenom', $prenom);
+        $stmt->bindParam(':mail', $mail);
+        $stmt->bindParam(':tagNFC', $tagNFC);
+
+        // Exécuter la requête
+        $stmt->execute();
+
+        // Message de succès
+        $message = "Le compte de $prenom $nom a été créé avec succès!";
+    } catch (PDOException $e) {
+        // Gérer les erreurs de la base de données ici
+        $message = "Erreur lors de la création du compte : " . $e->getMessage();
+    }
 }
 
-// Récupérer les données du formulaire
-$nom = $_POST['nom'];
-$prenom = $_POST['prenom'];
-$mail = $_POST['mail'];
-$tagNFC = $_POST['tagNFC'];
-
-// Requête d'insertion dans la table Utilisateur
-$sql = "INSERT INTO Utilisateur (nom, prenom, mail, clef_id, clickshare_id)
-        VALUES ('$nom', '$prenom', '$mail', (SELECT clef_id FROM Clef WHERE tagNFC = '$tagNFC'), (SELECT clickshare_id FROM Clickshare WHERE tagNFC = '$tagNFC'))";
-
-// Afficher la requête SQL pour débogage
-echo "Requête SQL: $sql<br>"
-
-if ($conn->query($sql) === TRUE) {
-    echo "Utilisateur ajouté avec succès.";
-} else {
-    echo "Erreur lors de l'ajout de l'utilisateur : " . $conn->error;
-}
-
-// Fermer la connexion
-$conn->close();
+// Render the Twig template with the fetched data and message
+echo $twig->render('creationcompte.twig', [
+    'titre' => $titre,
+    'menuItems' => $menuItems,
+    'message' => $message, // Passer le message à Twig
+]);
 ?>

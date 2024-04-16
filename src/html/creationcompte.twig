@@ -28,12 +28,18 @@
     <div class="login-box">
         <h2>Création de compte</h2>
             <div class="login-form">
-                <!-- Formulaire avec action pointant vers traitement_formulaire.php -->
-                <form action="src/php/traitement_formulaire.php" method="post">
-                    <input type="text" name="nom" placeholder="Nom" required> <!-- Champ Nom requis -->
-                    <input type="text" name="prenom" placeholder="Prenom" required> <!-- Champ Prénom requis -->
-                    <input type="email" name="mail" placeholder="adresse mail" required> <!-- Champ Email requis avec type "email" pour validation -->
-                    <input type="text" name="tagNFC" placeholder="Tag Nfc" required> <!-- Champ Tag NFC requis -->
+                {% if message %}
+                    {% if message.startswith('Erreur') %}
+                        <div class="error-message">{{ message }}</div>
+                    {% else %}
+                        <div class="success-message">{{ message }}</div>
+                    {% endif %}
+                {% endif %}
+                <form action="creationcompte.php" method="post">
+                    <input type="text" name="nom" placeholder="Nom" required>
+                    <input type="text" name="prenom" placeholder="Prenom" required>
+                    <input type="email" name="mail" placeholder="adresse mail" required>
+                    <input type="text" name="tagNFC" placeholder="Tag Nfc" required>
                     <button type="submit">Création compte</button>
                 </form>
             </div>
