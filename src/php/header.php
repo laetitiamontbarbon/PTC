@@ -1,22 +1,27 @@
 <?php
 spl_autoload_register(function ($classname) {
-    $filename = '../'.ltrim(str_replace('\\', '/', $classname)
-    ) .'.php';
-    if (file_exists($filename)) require_once $filename;
-    });
-$loader = new \Twig\Loader\FilesystemLoader('../html');
+    $baseDir = __DIR__ . '/php/';
+    $filename = $baseDir . str_replace('\\', '/', $classname) . '.php';
+    if (file_exists($filename)) {
+        require_once $filename;
+    }
+});
+
+
+$baseDirTwig = __DIR__ . '/html/';
+$loader = new \Twig\Loader\FilesystemLoader($baseDirTwig);
+
 $twig = new \Twig\Environment($loader);
-$titre = 'Acupure';
-$slogan = 'Piquez la curiosité de votre bien-être';
+$titre = 'Connected Locker';
 $menuItems = [
-    ['href' => '../php/search.php', 'text' => 'Accueil'],
-    ['href' => 'pathologies.php', 'text' => 'Pathologies'],
-    ['href' => 'symptomes.html', 'text' => 'Symptômes']
+    ['href' => '../php/search.php', 'text' => 'Créer compte'],
+    ['href' => 'gereracces.php', 'text' => 'Gerer acces'],
+    ['href' => 'symptomes.html', 'text' => 'Voir acces']
 ];
-echo $twig->render('index.twig', [
+echo $twig->render('html/creationcompte.twig', [
     'titre' => $titre,
-    'slogan' => $slogan,
     'menuItems' => $menuItems
 ]);
+
 
 ?>

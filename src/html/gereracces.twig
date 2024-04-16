@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>connected locker - Accueil</title>
+    <link rel="stylesheet" href="../css/stylesheet.css">
+</head>
+
+<body>
+<div class="container">
+{% block menu %}
+    <div class="logo">{{ titre }}</div>
+    <div class="separation"></div>
+
+    <div class="menu">
+        <ul>
+            {% for item in menuItems %}
+                <li><a href="{{ item.href }}">{{ item.text }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endblock %}
+</div>
+<div class="content">
+    {% block content %}
+    <h1>Liste des Utilisateurs et Salles</h1>
+    <ul>
+        {% for row in data %}
+            <li>
+                <strong>Nom de l'utilisateur:</strong> {{ row.nom_utilisateur }} <br>
+                <strong>Nom de la salle:</strong> {{ row.nom_salle }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+</body>
+</html>

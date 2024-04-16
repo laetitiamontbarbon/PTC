@@ -1,0 +1,46 @@
+services:
+  php:
+    container_name: projetPHP-tronc-commun
+    build:
+      context: .
+      dockerfile: conf/php/Dockerfile
+    restart: on-failure
+    ports:
+      - 60185:80
+    environment: 
+      DB_HOST: postgres
+      DB_USER: ${POSTGRES_PHP_USER}
+      DB_PASSWORD: ${POSTGRES_PHP_PASSWORD}
+      DB_DB: ${POSTGRES_DB_NAME}
+    volumes:
+      - ./src:/var/www/html
+
+  postgres:
+    container_name: projet-postgres-tronc-commun
+    build:
+      context: .
+      dockerfile: conf/postgres/Dockerfile
+      args:
+        - POSTGRES_SCRIPTS_INIT_DIR=${POSTGRES_SCRIPTS_INIT_DIR}
+        - POSTGRES_PHP_USER=${POSTGRES_PHP_USER}
+        - POSTGRES_PHP_PASSWORD=${POSTGRES_PHP_PASSWORD}
+    restart: on-failure
+    environment:
+      POSTGRES_USER: ${POSTGRES_ADMIN_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB_NAME}
+
+  pgadmin:
+    container_name: projet-pgadmin-tronc-commun
+    image: dpage/pgadmin4
+    restart: on-failure
+    ports:
+      - 60186:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: test@test.test
+      PGADMIN_DEFAULT_PASSWORD: testtest
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: 'False'
+      PGADMIN_LISTEN_PORT: 80
+    volumes:
+      - ./conf/pgadmin/servers.json:/pgadmin4/servers.json
