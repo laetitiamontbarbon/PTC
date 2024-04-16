@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs</title>
+</head>
+<body>
+    <table>
+    <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Date d'umprunt</th>
+    <th scope="col">Utilsateur</th>
+    <th scope="col">Clickshare</th>
+    <th scope="col">Clé</th>
+    <th scope="col">Rendu</th>
+    </tr>
+    {% for item in entities %}
+    <tr>
+      <th scope="row">{{item.pret_id}}</th>
+      <td>{{item.date_inscription}}</td>
+      <td>{{item.Utilisateur_id}}</td>
+      <td>{{item.clickshare_id}}</td>
+      <td>{{item.clef_id}}</td>
+      <td>{{item.rendu_check}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
