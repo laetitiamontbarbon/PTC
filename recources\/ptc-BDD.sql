@@ -30,6 +30,7 @@ CREATE TABLE Utilisateur  (
 CREATE TABLE Pret  (
     pret_id INT PRIMARY KEY,
     date_inscription TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    rendu_check BOOLEAN,
     clef_id INT,
     Utilisateur_id INT,
     clickshare_id INT,
