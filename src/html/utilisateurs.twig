@@ -1,0 +1,38 @@
+{% extends "creationcompte.twig" %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block menu %}
+    {{ parent() }}
+{% endblock %}
+
+
+{% block content %}
+    <div class="pro_container">
+        {% if data is empty %}
+            <p>Aucun résultat trouvé.</p>
+        {% else %}
+            {% for row in data %}
+                <div class="box_products">
+                    <div class="des">
+                        <h5 class="titre_utilisateur">{{ row.Nom_Utilisateur }}</h5>
+                        <div class="salles">
+                            <h6>Salles:</h6>
+                            <ul>
+                                {% if row.Nom_Salle is defined %}
+                                    {% for salle in row.Nom_Salle %}
+                                        <li>{{ salle }}</li>
+                                    {% endfor %}
+                                {% else %}
+                                    <li>Aucune salle</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}
