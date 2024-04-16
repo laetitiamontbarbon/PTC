@@ -22,14 +22,21 @@ CREATE TABLE Clickshare (
 );
 
 CREATE TABLE Utilisateur  (
-    Utilisateur _id INT PRIMARY KEY,
+    Utilisateur_id INT PRIMARY KEY,
     nom VARCHAR(255),
     prenom VARCHAR(255),
     mail VARCHAR(255),
+);
+CREATE TABLE Pret  (
+    pret_id INT PRIMARY KEY,
+    date_inscription TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     clef_id INT,
+    Utilisateur_id INT,
     clickshare_id INT,
+    FOREIGN KEY (Utilisateur_id) REFERENCES Utilisateur(Utilisateur_id),
     FOREIGN KEY (clef_id) REFERENCES Clef(clef_id),
     FOREIGN KEY (clickshare_id) REFERENCES Clickshare(clickshare_id)
+
 );
 
 -- Insérer une salle avec un nom 'I207'
