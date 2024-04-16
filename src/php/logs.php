@@ -1,9 +1,9 @@
 <?php
 
-require '../vendor/autoload.php';
+
 
 try {
-    $dbh = new PDO('mysql:host=localhost;dbname=nom_de_votre_base_de_donnees', 'votre_utilisateur', 'votre_mot_de_passe');
+    $dbh = new PDO('mysql:host=postgres;dbname=nom_de_votre_base_de_donnees', 'postgres', 'postgres');
 
     $sql = "SELECT 
                 Pret.pret_id as id,
