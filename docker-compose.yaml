@@ -25,6 +25,8 @@ services:
         - POSTGRES_PHP_USER=${POSTGRES_PHP_USER}
         - POSTGRES_PHP_PASSWORD=${POSTGRES_PHP_PASSWORD}
     restart: on-failure
+    ports:
+      - 60187:5432
     environment:
       POSTGRES_USER: ${POSTGRES_ADMIN_USER}
       POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD}
