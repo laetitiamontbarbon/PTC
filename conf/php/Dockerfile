@@ -8,6 +8,13 @@ RUN apt-get update && apt-get install -y libpq-dev && docker-php-ext-install pdo
 # Activer le module de réécriture d'URL
 RUN a2enmod rewrite
 
+# Copier le fichier .env dans le conteneur
+COPY .env /var/www/html/.env
+
+# Activer le support des variables d'environnement à partir du fichier .env
+RUN set -o allexport; source /var/www/html/.env; set +o allexport
+
+
 # Ajouter configuration PHP custom
 COPY conf/php/custom-php.ini /usr/local/etc/php/conf.d/custom-php.ini
 

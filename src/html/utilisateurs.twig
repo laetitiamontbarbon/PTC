@@ -11,28 +11,20 @@
 
 {% block content %}
     <div class="pro_container">
-        {% if data is empty %}
-            <p>Aucun résultat trouvé.</p>
+        {% if users is empty %}
+            <p>Aucun utilisateur trouvé.</p>
         {% else %}
-            {% for row in data %}
+            {% for user in users %}
                 <div class="box_products">
                     <div class="des">
-                        <h5 class="titre_utilisateur">{{ row.Nom_Utilisateur }}</h5>
-                        <div class="salles">
-                            <h6>Salles:</h6>
-                            <ul>
-                                {% if row.Nom_Salle is defined %}
-                                    {% for salle in row.Nom_Salle %}
-                                        <li>{{ salle }}</li>
-                                    {% endfor %}
-                                {% else %}
-                                    <li>Aucune salle</li>
-                                {% endif %}
-                            </ul>
-                        </div>
+                        <h5 class="titre_utilisateur">{{ user['nom'] }} {{ user['prenom'] }}</h5>
+                        <p>Email: {{ user['mail'] }}</p>
+                        <!-- Vous pouvez ajouter d'autres informations ici selon vos besoins -->
                     </div>
                 </div>
             {% endfor %}
         {% endif %}
     </div>
 {% endblock %}
+
+

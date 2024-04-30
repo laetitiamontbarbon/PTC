@@ -16,4 +16,6 @@ ARG POSTGRES_SCRIPTS_INIT_DIR=${POSTGRES_SCRIPTS_INIT_DIR}
 
 RUN echo "POSTGRES_PHP_USER=$POSTGRES_PHP_USER"
 
+# Copier les scripts d'initialisation dans le répertoire d'entrée de la base de données
 COPY ${POSTGRES_SCRIPTS_INIT_DIR} /docker-entrypoint-initdb.d/
+
