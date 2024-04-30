@@ -1,4 +1,20 @@
-/* CREATE TABLE Clef (
+CREATE TABLE Utilisateur (
+    Utilisateur_id INT PRIMARY KEY,
+    nom VARCHAR(255),
+    prenom VARCHAR(255),
+    mail VARCHAR(255)
+);
+
+-- Insérer des utilisateurs avec des clef_id existants
+INSERT INTO Utilisateur (Utilisateur_id, nom, prenom, mail)
+VALUES
+(2, 'Tremblay', 'Sophie', 'sophie.tremblay@example.com'),
+(3, 'Garcia', 'Luis', 'luis.garcia@example.com');
+
+
+
+
+/*CREATE TABLE Clef (
     clef_id INT PRIMARY KEY,
     tagNFC VARCHAR(255),
     salle_id INT,
@@ -10,20 +26,20 @@ CREATE TABLE Clickshare (
     tagNFC VARCHAR(255),
     salle_id INT,
     FOREIGN KEY (salle_id) REFERENCES Salle(salle_id)
-); */
+);
 
 CREATE TABLE Utilisateur (
     Utilisateur_id INT PRIMARY KEY,
     nom VARCHAR(255),
     prenom VARCHAR(255),
     mail VARCHAR(255),
-    /*clef_id INT,
+    clef_id INT,
     clickshare_id INT,
     FOREIGN KEY (clef_id) REFERENCES Clef(clef_id),
-    FOREIGN KEY (clickshare_id) REFERENCES Clickshare(clickshare_id)*/
+    FOREIGN KEY (clickshare_id) REFERENCES Clickshare(clickshare_id)
 );
 
-/* CREATE TABLE Pret (
+ CREATE TABLE Pret (
     pret_id INT PRIMARY KEY,
     date_inscription TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     rendu_check BOOLEAN,
@@ -62,11 +78,11 @@ VALUES
 -- Insérer des utilisateurs avec des clef_id existants
 INSERT INTO Utilisateur (Utilisateur_id, nom, prenom, mail, clef_id, clickshare_id)
 VALUES
-/*(1, 'Dupont', 'Jean', 'jean.dupont@example.com', 9, 17),*/
+(1, 'Dupont', 'Jean', 'jean.dupont@example.com', 9, 17),
 (2, 'Tremblay', 'Sophie', 'sophie.tremblay@example.com'),
 (3, 'Garcia', 'Luis', 'luis.garcia@example.com');
 
-/* -- Insérer une salle avec un nom 'I207'
+ -- Insérer une salle avec un nom 'I207'
 INSERT INTO Salle (salle_id, nom, clef_id, clickshare_id)
 VALUES
 (1, 'I207', 9, 17),
