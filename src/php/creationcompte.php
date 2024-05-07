@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Préparer la requête d'insertion
-        $stmt = $dbh->prepare("INSERT INTO utilisateur (nom, prenom, mail, tagNFC) VALUES (:nom, :prenom, :mail, :tagNFC)");
+        $stmt = $dbh->prepare("INSERT INTO Utilisateur (nom, prenom, mail, tagNFC) VALUES (:nom, :prenom, :mail, :tagNFC)");
 
         // Bind des valeurs
         $stmt->bindParam(':nom', $nom);
