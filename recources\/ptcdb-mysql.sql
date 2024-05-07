@@ -30,10 +30,7 @@ CREATE TABLE Utilisateur  (
     nom VARCHAR(255),
     prenom VARCHAR(255),
     mail VARCHAR(255),
-    clef_id INT,
-    clickshare_id INT,
-    FOREIGN KEY (clef_id) REFERENCES Clef(clef_id),
-    FOREIGN KEY (clickshare_id) REFERENCES Clickshare(clickshare_id)
+    tagNFC INT
 );
 
 CREATE TABLE Pret  (
