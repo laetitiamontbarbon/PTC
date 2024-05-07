@@ -30,7 +30,7 @@ CREATE TABLE Utilisateur (
     nom VARCHAR(255),
     prenom VARCHAR(255),
     mail VARCHAR(255),
-    tagNFC INT
+    tagNFC VARCHAR(255)
 );
 
 
