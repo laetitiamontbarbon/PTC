@@ -82,8 +82,8 @@ VALUES
 (16, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 8);
 
 -- Insérer des utilisateurs avec des clef_id existants
-INSERT INTO Utilisateur (Utilisateur_id, nom, prenom, mail, clef_id, clickshare_id)
+INSERT INTO Utilisateur (Utilisateur_id, nom, prenom, mail, tagNFC)
 VALUES
-(1, 'Dupont', 'Jean', 'jean.dupont@example.com', 9, 17),
-(2, 'Tremblay', 'Sophie', 'sophie.tremblay@example.com', 10, 18),
-(3, 'Garcia', 'Luis', 'luis.garcia@example.com', 11, 19);
+(1, 'Dupont', 'Jean', 'jean.dupont@example.com', 9564693),
+(2, 'Tremblay', 'Sophie', 'sophie.tremblay@example.com', 1393203),
+(3, 'Garcia', 'Luis', 'luis.garcia@example.com', 3131234);
