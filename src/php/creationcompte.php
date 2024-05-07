@@ -5,7 +5,7 @@ require_once 'config.php';
 $titre = 'Connected Locker';
 $menuItems = [
     ['href' => 'creationcompte.php', 'text' => 'Créer compte'],
-    ['href' => 'utilisateurs.php', 'text' => 'Utilisateur'],
+    ['href' => 'utilisateurs.php', 'text' => 'Utilisateurs'],
     ['href' => 'salles.php', 'text' => 'Salles']
 ];
 
