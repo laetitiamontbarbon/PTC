@@ -47,4 +47,5 @@ try {
 
 } catch (PDOException $e) {
     echo $e->getCode() . ' ' . $e->getMessage();
+    //test
 }
