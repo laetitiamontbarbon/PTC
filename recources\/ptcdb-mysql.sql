@@ -1,13 +1,18 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+CREATE TABLE Utilisateur (
+    utilisateur_id SERIAL PRIMARY KEY,
+    nom VARCHAR(255),
+    prenom VARCHAR(255),
+    mail VARCHAR(255),
+    tagNFC VARCHAR(255)
+);
+
 CREATE TABLE Salle (
     salle_id SERIAL PRIMARY KEY,
-    nom VARCHAR(255),
-    clef_id INT,
-    clickshare_id INT,
-    FOREIGN KEY (clef_id) REFERENCES Clef(clef_id),
-    FOREIGN KEY (clickshare_id) REFERENCES Clickshare(clickshare_id)
+    nom VARCHAR(255)
+
 );
 
 CREATE TABLE Clef (
@@ -23,15 +28,6 @@ CREATE TABLE Clickshare (
     salle_id INT,
     FOREIGN KEY (salle_id) REFERENCES Salle(salle_id)
 );
-
-CREATE TABLE Utilisateur (
-    utilisateur_id SERIAL PRIMARY KEY,
-    nom VARCHAR(255),
-    prenom VARCHAR(255),
-    mail VARCHAR(255),
-    tagNFC VARCHAR(255)
-);
-
 
 CREATE TABLE Pret  (
     pret_id SERIAL PRIMARY KEY,
