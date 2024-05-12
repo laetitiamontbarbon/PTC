@@ -9,7 +9,7 @@ CREATE TABLE Utilisateur (
     tagNFC VARCHAR(255)
 );
 
-PRINT coucou1
+PRINT coucou1;
 
 CREATE TABLE Salle (
     salle_id SERIAL PRIMARY KEY,
