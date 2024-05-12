@@ -1,6 +1,4 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+--script init--
 CREATE TABLE Utilisateur (
     utilisateur_id SERIAL PRIMARY KEY,
     nom VARCHAR(255),
@@ -9,7 +7,6 @@ CREATE TABLE Utilisateur (
     tagNFC VARCHAR(255)
 );
 
-PRINT coucou1;
 
 CREATE TABLE Salle (
     salle_id SERIAL PRIMARY KEY,
