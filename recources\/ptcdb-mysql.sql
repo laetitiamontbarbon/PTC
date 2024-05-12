@@ -53,7 +53,7 @@ VALUES
 (6, 'I202'),
 (7, 'I201'),
 (8, 'I200');
-
+PRINT coucou2
 -- Insérer un Clickshare avec un tagNFC aléatoire
 INSERT INTO Clickshare (clickshare_id, tagNFC, salle_id)
 VALUES
