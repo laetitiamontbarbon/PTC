@@ -1,9 +1,8 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
-
 CREATE TABLE Salle (
-    salle_id INT PRIMARY KEY,
+    salle_id SERIAL PRIMARY KEY,
     nom VARCHAR(255),
     clef_id INT,
     clickshare_id INT,
@@ -12,20 +11,21 @@ CREATE TABLE Salle (
 );
 
 CREATE TABLE Clef (
-    clef_id INT PRIMARY KEY,
+    clef_id SERIAL PRIMARY KEY,
     tagNFC VARCHAR(255),
     salle_id INT,
     FOREIGN KEY (salle_id) REFERENCES Salle(salle_id)
 );
 
 CREATE TABLE Clickshare (
-    clickshare_id INT PRIMARY KEY,
+    clickshare_id SERIAL PRIMARY KEY,
     tagNFC VARCHAR(255),
     salle_id INT,
     FOREIGN KEY (salle_id) REFERENCES Salle(salle_id)
 );
 
 CREATE TABLE Utilisateur (
+    utilisateur_id SERIAL PRIMARY KEY,
     nom VARCHAR(255),
     prenom VARCHAR(255),
     mail VARCHAR(255),
@@ -34,16 +34,17 @@ CREATE TABLE Utilisateur (
 
 
 CREATE TABLE Pret  (
-    pret_id INT PRIMARY KEY,
+    pret_id SERIAL PRIMARY KEY,
     date_inscription TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     rendu_check BOOLEAN,
     clef_id INT,
-    Utilisateur_id INT,
+    utilisateur_id INT,
     clickshare_id INT,
-    FOREIGN KEY (Utilisateur_id) REFERENCES Utilisateur(Utilisateur_id),
+    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id),
     FOREIGN KEY (clef_id) REFERENCES Clef(clef_id),
     FOREIGN KEY (clickshare_id) REFERENCES Clickshare(clickshare_id)
 );
+
 
 -- Insérer une salle avec un nom 'I207'
 INSERT INTO Salle (salle_id, nom, clef_id, clickshare_id)
