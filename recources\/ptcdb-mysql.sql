@@ -78,11 +78,6 @@ VALUES
 (15, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 7),
 (16, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 8);
 
-INSERT INTO Utilisateur (nom, prenom, mail, tagNFC)
-VALUES (
-    (SELECT array_agg(names ORDER BY random() LIMIT 1) FROM (VALUES ('Smith'), ('Johnson'), ('Williams'), ('Jones'), ('Brown'), ('Davis'), ('Miller'), ('Wilson'), ('Moore'), ('Taylor')) AS random(names)),
-    (SELECT array_agg(firstnames ORDER BY random() LIMIT 1) FROM (VALUES ('James'), ('John'), ('Robert'), ('Michael'), ('William'), ('David'), ('Richard'), ('Joseph'), ('Charles'), ('Thomas')) AS random(firstnames)),
-    (SELECT array_agg(emails ORDER BY random() LIMIT 1) FROM (VALUES ('gmail.com'), ('yahoo.com'), ('hotmail.com'), ('outlook.com'), ('icloud.com')) AS random(emails)),
-    (SELECT substr(MD5(random()::text), 0, 8))
-);
+INSERT INTO Utilisateur (nom, prenom, mail, tagNFC) 
+VALUES ('Doe', 'John', 'john.doe@example.com', '12345678');
 
