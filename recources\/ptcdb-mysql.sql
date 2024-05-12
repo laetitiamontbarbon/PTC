@@ -57,26 +57,26 @@ VALUES
 -- Insérer un Clickshare avec un tagNFC aléatoire
 INSERT INTO Clickshare (clickshare_id, tagNFC, salle_id)
 VALUES
-(17, 'TAG_CLICKSHARE_' || FLOOR(RAND() * 1000000), 1),
-(18, 'TAG_CLICKSHARE_' || FLOOR(RAND() * 1000000), 2),
-(19, 'TAG_CLICKSHARE_' || FLOOR(RAND() * 1000000), 3),
-(20, 'TAG_CLICKSHARE_' || FLOOR(RAND() * 1000000), 4),
-(21, 'TAG_CLICKSHARE_' || FLOOR(RAND() * 1000000), 5),
-(22, 'TAG_CLICKSHARE_' || FLOOR(RAND() * 1000000), 6),
-(23, 'TAG_CLICKSHARE_' || FLOOR(RAND() * 1000000), 7),
-(24, 'TAG_CLICKSHARE_' || FLOOR(RAND() * 1000000), 8);
+(17, 6, 1),
+(18, 5, 2),
+(19, 4, 3),
+(20, 3, 4),
+(21, 2, 5),
+(22, 1, 6),
+(23, 0, 7),
+(24, 12, 8);
 
 -- Insérer une clé avec un tagNFC aléatoire
 INSERT INTO Clef (clef_id, tagNFC, salle_id)
 VALUES
-(9, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 1),
-(10, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 2),
-(11, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 3),
-(12, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 4),
-(13, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 5),
-(14, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 6),
-(15, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 7),
-(16, 'TAG_CLEF_' || FLOOR(RAND() * 1000000), 8);
+(9,  12341341, 1),
+(10, 13142443, 2),
+(11, 12223341, 3),
+(12, 44444444, 4),
+(13, 42314147, 5),
+(14, 41345139, 6),
+(15, 42425250, 7),
+(16, 99999999, 8);
 
 INSERT INTO Utilisateur (nom, prenom, mail, tagNFC) 
 VALUES ('Doe', 'John', 'john.doe@example.com', '12345678');
