@@ -43,16 +43,16 @@ CREATE TABLE Pret  (
 
 
 -- Insérer une salle avec un nom 'I207'
-INSERT INTO Salle (salle_id, nom, clef_id, clickshare_id)
+INSERT INTO Salle (salle_id, nom)
 VALUES
-(1, 'I207', 9, 17),
-(2, 'I206', 10, 18),
-(3, 'I205', 11, 19),
-(4, 'I204', 12, 20),
-(5, 'I203', 13, 21),
-(6, 'I202', 14, 22),
-(7, 'I201', 15, 23),
-(8, 'I200', 16, 24);
+(1, 'I207'),
+(2, 'I206'),
+(3, 'I205'),
+(4, 'I204'),
+(5, 'I203'),
+(6, 'I202'),
+(7, 'I201'),
+(8, 'I200');
 
 -- Insérer un Clickshare avec un tagNFC aléatoire
 INSERT INTO Clickshare (clickshare_id, tagNFC, salle_id)
