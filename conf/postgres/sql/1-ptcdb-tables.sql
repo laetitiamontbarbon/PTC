@@ -5,12 +5,15 @@ CREATE TABLE Utilisateur (
     mail VARCHAR(255)
 );
 
--- Insérer des utilisateurs avec des clef_id existants
-INSERT INTO Utilisateur (Utilisateur_id, nom, prenom, mail)
-VALUES
-(1, 'Tremblay', 'Sophie', 'sophie.tremblay@example.com'),
-(2, 'Garcia', 'Luis', 'luis.garcia@example.com');
+CREATE TABLE Salles (
+    Salle_id INT PRIMARY KEY,
+    numero VARCHAR(255) 
+);
 
+INSERT INTO Salles (Salle_id, numero)
+VALUES
+(1, 'I207'),
+(2, 'I305');
 
 
 

@@ -1,0 +1,21 @@
+{% extends "creationcompte.twig" %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block menu %}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="pro_container">
+        {% for salle in salles %}
+                <div class="box_products white-box">
+                    <div class="des white-text">
+                        <h5 class="titre_utilisateur">{{ salle['Salle_id'] }} {{ salle['numero'] }}</h5>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+{% endblock %}
