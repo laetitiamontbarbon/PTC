@@ -10,9 +10,6 @@
 
 {% block content %}
     <div class="pro_container">
-        {% if users is empty %}
-            <p class="white-text">Aucun utilisateur trouvé.</p>
-        {% else %}
             {% for user in users %}
                 <div class="box_products white-box">
                     <div class="des white-text">
@@ -21,7 +18,6 @@
                     </div>
                 </div>
             {% endfor %}
-        {% endif %}
     </div>
 {% endblock %}
 

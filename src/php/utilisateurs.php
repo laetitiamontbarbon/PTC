@@ -9,6 +9,7 @@ $menuItems = [
     ['href' => 'salles.php', 'text' => 'Salles']
 ];
 
+
 // Database connection settings
 $host = $_ENV['DB_HOST'];
 $user = $_ENV['DB_USER'];
@@ -34,10 +35,14 @@ try {
         $sth->execute();
         $data = $sth->fetchAll(PDO::FETCH_ASSOC); // Fetch data as associative array
 
-        // Pas besoin de commit ici, car il n'y a pas de modification de la base de données
 
         // Transmettez les données récupérées à votre fichier Twig
-        echo $twig->render('utilisateurs.twig', ['users' => $data]);
+        // Render the Twig template with the fetched data and message
+        echo $twig->render('utilisateurs.twig', [
+        'titre' => $titre,
+        'menuItems' => $menuItems,
+        'users' => $data
+        ]);
 
     } catch (PDOException $e) {
         $dbh->rollback();
@@ -47,6 +52,6 @@ try {
 
 } catch (PDOException $e) {
     echo $e->getCode() . ' ' . $e->getMessage();
-    //test
-    //test2
+
 }
+

@@ -33,7 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dbh = new PDO($dsn);
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Préparer la requête d'insertion
+        // Compter le nombre d'utilisateurs déjà présents
+        $stmt_count = $dbh->prepare("SELECT COUNT(*) FROM Utilisateur");
+        $stmt_count->execute();
+        $count = $stmt_count->fetchColumn();
+
+        // Calculer le nouvel ID
+        $id = $count + 1;
+
+
        // Préparer la requête d'insertion
         $stmt = $dbh->prepare("INSERT INTO Utilisateur (Utilisateur_id, nom, prenom, mail) VALUES (:id, :nom, :prenom, :mail)");
 
@@ -42,9 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':mail', $mail);
-
-        // Assigner une valeur à $id (par exemple, à partir des données de la base de données ou d'une autre source)
-        $id = 6; // assigner la valeur appropriée pour l'ID de l'utilisateur
 
         // Exécuter la requête
         $stmt->execute();

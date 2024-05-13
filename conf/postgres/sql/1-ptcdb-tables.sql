@@ -8,8 +8,8 @@ CREATE TABLE Utilisateur (
 -- Insérer des utilisateurs avec des clef_id existants
 INSERT INTO Utilisateur (Utilisateur_id, nom, prenom, mail)
 VALUES
-(2, 'Tremblay', 'Sophie', 'sophie.tremblay@example.com'),
-(3, 'Garcia', 'Luis', 'luis.garcia@example.com');
+(1, 'Tremblay', 'Sophie', 'sophie.tremblay@example.com'),
+(2, 'Garcia', 'Luis', 'luis.garcia@example.com');
 
 
 
