@@ -6,10 +6,10 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Changement de la police */
+    font-family: 'Poppins', sans-serif;
     background-image: url("../images/background.jpg");
     background-size: cover;
-    color: #333;
+    color: #fff; /* Changer la couleur du texte en blanc */
     margin: 0;
     padding: 0;
 }
@@ -20,29 +20,25 @@ body {
     padding: 20px;
 }
 
-
 .logo {
-    font-family: 'Poppins', sans-serif; /* Changement de la police */
     font-size: 40px;
-    color: #fff; /* Couleur du texte du titre */
     margin-bottom: 10px;
-    text-align: center; /* Centrer le texte */
+    text-align: center;
 }
-
 
 .menu {
     text-align: center;
-    background-color: rgba(137, 164, 182, 0.9); /* Couleur de fond de la bande de liens */
+    background-color: rgba(137, 164, 182, 0.9);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    padding: 10px 0; /* Ajout de padding pour l'espace autour des liens */
+    padding: 10px 0;
 }
 
 .menu ul {
     list-style-type: none;
     padding: 0;
     display: flex;
-    justify-content: center; /* Centrer les éléments */
+    justify-content: center;
 }
 
 .menu ul li {
@@ -50,22 +46,21 @@ body {
 }
 
 .menu ul li:last-child {
-    margin-right: 0; /* Supprimer la marge à droite du dernier élément */
+    margin-right: 0;
 }
 
 .menu ul li a {
     text-decoration: none;
-    color: #FFF; /* Couleur du texte des liens */
     font-size: 18px;
     transition: color 0.3s;
 }
 
 .menu ul li a:hover {
-    color: #333; /* Couleur du texte des liens au survol */
+    color: #333;
 }
 
 .login-box {
-    background-color: rgba(137, 164, 182, 0.9); /* Couleur de fond transparente */
+    background-color: rgba(137, 164, 182, 0.9);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
@@ -75,7 +70,6 @@ body {
 }
 
 .login-box h2 {
-    font-family: 'Poppins', sans-serif; /* Changement de la police */
     font-size: 30px;
     margin-bottom: 20px;
 }
@@ -92,12 +86,12 @@ body {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.7); /* Couleur de fond transparente pour les champs */
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .login-form input[type="text"],
 .login-form input[type="password"] {
-    background-color: rgba(255, 255, 255, 0.7); /* Couleur de fond transparente pour les champs */
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 .login-form button {
@@ -110,4 +104,13 @@ body {
 
 .login-form button:hover {
     background-color: #89A4B6;
+}
+
+/* Nouvelles classes ajoutées */
+.white-text {
+    color: #fff; /* Définir la couleur du texte en blanc */
+}
+
+.white-box {
+    background-color: rgba(255, 255, 255, 0.7); /* Définir la couleur de fond en blanc transparent */
 }

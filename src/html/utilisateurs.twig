@@ -8,23 +8,22 @@
     {{ parent() }}
 {% endblock %}
 
-
 {% block content %}
     <div class="pro_container">
         {% if users is empty %}
-            <p>Aucun utilisateur trouvé.</p>
+            <p class="white-text">Aucun utilisateur trouvé.</p>
         {% else %}
             {% for user in users %}
-                <div class="box_products">
-                    <div class="des">
+                <div class="box_products white-box">
+                    <div class="des white-text">
                         <h5 class="titre_utilisateur">{{ user['nom'] }} {{ user['prenom'] }}</h5>
-                        <p>Email: {{ user['mail'] }}</p>
-                        <!-- Vous pouvez ajouter d'autres informations ici selon vos besoins -->
+                        <p class="white-text">Email: {{ user['mail'] }}</p>
                     </div>
                 </div>
             {% endfor %}
         {% endif %}
     </div>
 {% endblock %}
+
 
 

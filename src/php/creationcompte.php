@@ -10,7 +10,6 @@ $menuItems = [
 ];
 
 
-
 // Initialiser la variable de message
 $message = '';
 
@@ -20,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $mail = $_POST['mail'];
-    $tagNFC = $_POST['tagNFC'];
 
     // Connexion à la base de données (à remplacer avec vos informations de connexion)
-    $host = $_ENV['DB_HOST'];  // Adresse du serveur MySQL
-    $user = $_ENV['DB_USER'];  // Nom d'utilisateur MySQL
-    $password = $_ENV['DB_PASSWORD'];  // Mot de passe MySQL
-    $database = $_ENV['DB_DB'];  // Nom de la base de données
+  // Database connection settings
+    $host = $_ENV['DB_HOST'];
+    $user = $_ENV['DB_USER'];
+    $password = $_ENV['DB_PASSWORD'];
+    $database = $_ENV['DB_DB'];
     $port = 5432;
 
     try {
@@ -35,13 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Préparer la requête d'insertion
-        $stmt = $dbh->prepare("INSERT INTO Utilisateur (nom, prenom, mail, tagNFC) VALUES (:nom, :prenom, :mail, :tagNFC)");
+       // Préparer la requête d'insertion
+        $stmt = $dbh->prepare("INSERT INTO Utilisateur (Utilisateur_id, nom, prenom, mail) VALUES (:id, :nom, :prenom, :mail)");
 
         // Bind des valeurs
+        $stmt->bindParam(':id', $id);
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':prenom', $prenom);
         $stmt->bindParam(':mail', $mail);
-        $stmt->bindParam(':tagNFC', $tagNFC);
+
+        // Assigner une valeur à $id (par exemple, à partir des données de la base de données ou d'une autre source)
+        $id = 6; // assigner la valeur appropriée pour l'ID de l'utilisateur
 
         // Exécuter la requête
         $stmt->execute();
