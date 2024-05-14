@@ -24,7 +24,7 @@ try {
 
     // Requête SQL pour récupérer les utilisateurs
     $sql = "SELECT 
-                Utilisateur_id, nom, prenom, mail
+                Utilisateur_id, nom, prenom, mail, est_professeur, tag_nfc
             FROM
                 Utilisateur";
 
