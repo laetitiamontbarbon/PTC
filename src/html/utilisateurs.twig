@@ -10,13 +10,19 @@
 
 {% block content %}
     <div class="pro_container">
-            {% for user in users %}
+            {% for utilisateur in utilisateurs %}
                 <div class="box_products white-box">
                     <div class="des white-text">
-                        <h5 class="titre_utilisateur">{{ user['nom'] }} {{ user['prenom'] }}</h5>
-                        <p class="white-text">Email: {{ user['mail'] }}</p>
-                        <p class="white-text">est professeur: {{ user['est_professeur'] }}</p>
-                        <p class="white-text">tag nfc: {{ user['tag_nfc'] }}</p>
+                        <h5 class="titre_utilisateur">{{ utilisateur['nom'] }} {{ utilisateur['prenom'] }}</h5>
+                        <p class="white-text">Email: {{ utilisateur['mail'] }}</p>
+                        <p class="white-text">Est professeur: {% if utilisateur['est_professeur'] %}Oui{% else %}Non{% endif %}</p>
+                        <p class="white-text">Tag NFC: {{ utilisateur['tag_nfc'] }}</p>
+                        <p class="white-text">Salles associées:</p>
+                        <ul>
+                            {% for salle in utilisateur['salle'] %}
+                            <li>{{ salle['numero'] }} ({{ salle['code'] }})</li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             {% endfor %}

@@ -13,6 +13,38 @@ $menuItems = [
 // Initialiser la variable de message
 $message = '';
 
+// Connexion à la base de données
+// Database connection settings
+$host = $_ENV['DB_HOST'];
+$user = $_ENV['DB_USER'];
+$password = $_ENV['DB_PASSWORD'];
+$database = $_ENV['DB_DB'];
+$port = 5432;
+
+
+try {
+    $dsn = "pgsql:host=$host;port=$port;dbname=$database;user=$user;password=$password";
+    $dbh = new PDO($dsn);
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $stmt_salles = $dbh->prepare("SELECT Salle_id, numero FROM Salles");
+    $stmt_salles->execute();
+    $salles = $stmt_salles->fetchAll(PDO::FETCH_ASSOC);
+
+
+} catch (PDOException $e) {
+    // Gérer les erreurs de la base de données ici
+    $message = "Erreur lors de la récupération des salles : " . $e->getMessage();
+}
+
+// Render the Twig template with the fetched data and message
+echo $twig->render('creationcompte.twig', [
+    'titre' => $titre,
+    'menuItems' => $menuItems,
+    'message' => $message, // Passer le message à Twig
+    'salles' => $salles,
+]);
+
 // Si le formulaire est soumis
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les valeurs du formulaire
@@ -21,15 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mail = $_POST['mail'];
     $tag_nfc = $_POST['tag_nfc'];
     $est_professeur = $_POST['est_professeur'];
-    $salles = isset($_POST['salles']) ? $_POST['salles'] : [];
-
-    // Connexion à la base de données (à remplacer avec vos informations de connexion)
-  // Database connection settings
-    $host = $_ENV['DB_HOST'];
-    $user = $_ENV['DB_USER'];
-    $password = $_ENV['DB_PASSWORD'];
-    $database = $_ENV['DB_DB'];
-    $port = 5432;
 
     try {
         $dsn = "pgsql:host=$host;port=$port;dbname=$database;user=$user;password=$password";
@@ -43,7 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Calculer le nouvel ID
         $id = $count + 1;
-
 
        // Préparer la requête d'insertion
         $stmt = $dbh->prepare("INSERT INTO Utilisateur (Utilisateur_id, nom, prenom, mail, est_professeur, tag_nfc) VALUES (:id, :nom, :prenom, :mail, :est_professeur, :tag_nfc)");
@@ -63,11 +85,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_insert_salle = $dbh->prepare("INSERT INTO Utilisateur_Salles (Utilisateur_id, Salle_id) VALUES (:user_id, :salle_id)");
 
         // Insertion des salles auxquelles l'utilisateur a accès dans Utilisateur_Salles
-        foreach ($salles as $salle_id) {
+        // Insertion des salles auxquelles l'utilisateur a accès dans Utilisateur_Salles
+        foreach ($salles as $salle) {
+            $salle_id = $salle['salle_id']; // Extraire l'ID de la salle de l'enregistrement
             $stmt_insert_salle->bindParam(':user_id', $id);
             $stmt_insert_salle->bindParam(':salle_id', $salle_id);
             $stmt_insert_salle->execute();
-        }
+}
+
 
         // Validation de la transaction
         $dbh->commit();
@@ -79,11 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Gérer les erreurs de la base de données ici
         $message = "Erreur lors de la création du compte : " . $e->getMessage();
     }
+
 }
 
-// Render the Twig template with the fetched data and message
-echo $twig->render('creationcompte.twig', [
-    'titre' => $titre,
-    'menuItems' => $menuItems,
-    'message' => $message, // Passer le message à Twig
-]);
+

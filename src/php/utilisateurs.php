@@ -23,32 +23,46 @@ try {
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Requête SQL pour récupérer les utilisateurs
-    $sql = "SELECT 
-                Utilisateur_id, nom, prenom, mail, est_professeur, tag_nfc
-            FROM
-                Utilisateur";
-
-    try {
-        $dbh->beginTransaction(); // Commencer une transaction
-
-        $sth = $dbh->prepare($sql);
-        $sth->execute();
-        $data = $sth->fetchAll(PDO::FETCH_ASSOC); // Fetch data as associative array
+    $sql = "SELECT u.Utilisateur_id, u.nom, u.prenom, u.mail, u.est_professeur, u.tag_nfc, s.Salle_id, s.code, s.numero
+    FROM Utilisateur u
+    LEFT JOIN Utilisateur_Salles us ON u.Utilisateur_id = us.Utilisateur_id
+    LEFT JOIN Salles s ON us.Salle_id = s.Salle_id";
 
 
-        // Transmettez les données récupérées à votre fichier Twig
-        // Render the Twig template with the fetched data and message
-        echo $twig->render('utilisateurs.twig', [
-        'titre' => $titre,
-        'menuItems' => $menuItems,
-        'users' => $data
-        ]);
 
-    } catch (PDOException $e) {
-        $dbh->rollback();
-        echo "Erreur lors de l'exécution de la requête : " . $e->getMessage();
-        // Gérer l'erreur
+    $dbh->beginTransaction(); // Commencer une transaction
+
+    $sth = $dbh->prepare($sql);
+    $sth->execute();
+    $utilisateurs = $sth->fetchAll(PDO::FETCH_ASSOC); // Fetch data as associative array
+
+    // Pour chaque utilisateur, récupérez les informations des salles associées
+    foreach ($utilisateurs as &$utilisateur) {
+        $userId = $utilisateur['Utilisateur_id'];
+        $sqlSalles = "SELECT s.Salle_id, s.code, s.numero
+                    FROM Salles s
+                    JOIN Utilisateur_Salles us ON s.Salle_id = us.Salle_id
+                    WHERE us.Utilisateur_id = :userId";
+
+        $sthSalles = $dbh->prepare($sqlSalles);
+        $sthSalles->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $sthSalles->execute();
+        $salles = $sthSalles->fetchAll(PDO::FETCH_ASSOC);
+
+        // Ajoutez les informations des salles à l'utilisateur correspondant
+        $utilisateur['salle'] = $salles;
     }
+
+    $dbh->commit(); // Valider la transaction
+
+
+    // Transmettez les données récupérées à votre fichier Twig
+    echo $twig->render('utilisateurs.twig', [
+    'titre' => $titre,
+    'menuItems' => $menuItems,
+    'utilisateurs' => $utilisateurs
+    ]);
+
 
 } catch (PDOException $e) {
     echo $e->getCode() . ' ' . $e->getMessage();

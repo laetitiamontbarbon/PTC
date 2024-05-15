@@ -32,14 +32,6 @@ VALUES
 (3, 789, 'I206'),
 (4, 1011, 'I308');
 
--- Remplissage de la table Utilisateur_Salles (exemples fictifs d'associations)
-INSERT INTO Utilisateur_Salles (Utilisateur_id, Salle_id)
-VALUES
-(1, 1), -- Utilisateur 1 a accès à la salle 1
-(1, 2), -- Utilisateur 1 a accès à la salle 2
-(2, 3), -- Utilisateur 2 a accès à la salle 3
-(3, 1), -- Utilisateur 3 a accès à la salle 1
-(3, 4); -- Utilisateur 3 a accès à la salle 4
 
 
 

@@ -52,10 +52,11 @@
                     <label>Salles auxquelles l'utilisateur a accès :</label>
                     {% for salle in salles %}
                         <div>
-                            <input type="checkbox" id="salle_{{ salle }}" name="salles[]" value="{{ salle }}">
-                            <label for="salle_{{ salle }}">{{ salle }}</label>
+                            <label for="salle_{{ salle.Salle_id }}">{{ salle.numero }}</label>
+                            <input type="checkbox" id="salle_{{ salle.Salle_id }}" name="salles[]" value="{{ salle.Salle_id }}">
                         </div>
                     {% endfor %}
+
 
                     <button type="submit">Création compte</button>
                 </form>
