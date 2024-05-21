@@ -2,7 +2,7 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 
 CREATE TABLE Utilisateur (
-    Utilisateur_id INT PRIMARY KEY,
+    utilisateur_id INT PRIMARY KEY,
     nom VARCHAR(255),
     prenom VARCHAR(255),
     mail VARCHAR(255),
@@ -11,21 +11,26 @@ CREATE TABLE Utilisateur (
 );
 
 CREATE TABLE Salles (
-    Salle_id INT PRIMARY KEY,
+    salle_id INT PRIMARY KEY,
     code INT,
     numero VARCHAR(255) UNIQUE
 );
 
 CREATE TABLE Utilisateur_Salles (
-    Utilisateur_id INT,
-    Salle_id INT,
-    FOREIGN KEY (Utilisateur_id) REFERENCES Utilisateur(Utilisateur_id),
-    FOREIGN KEY (Salle_id) REFERENCES Salles(Salle_id),
-    PRIMARY KEY (Utilisateur_id, Salle_id)
+    utilisateur_id INT,
+    salle_id INT,
+    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateur(utilisateur_id),
+    FOREIGN KEY (salle_id) REFERENCES Salles(salle_id),
+    PRIMARY KEY (utilisateur_id, salle_id)
 );
 
+CREATE TABLE encryption_key (
+    key_text VARCHAR(255)
+);
+
+
 -- Remplissage de la table Salles
-INSERT INTO Salles (Salle_id, code, numero)
+INSERT INTO Salles (salle_id, code, numero)
 VALUES
 (1, 123, 'I207'),
 (2, 456, 'I203'),
@@ -34,6 +39,8 @@ VALUES
 
 
 
-
+INSERT INTO encryption_key (key_text)
+VALUES
+('60iQQp0V3QBRYbEivN1Z+UuA+2jcx7lJpuByuqvenHI=');
 
 

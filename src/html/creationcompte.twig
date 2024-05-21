@@ -6,7 +6,6 @@
 {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>connected locker</title>
     <link rel="stylesheet" href="../css/stylesheet.css">
 {% endblock %}
 </head>
@@ -46,16 +45,18 @@
 
                     <!-- Utiliser des cases à cocher pour le statut de professeur -->
                     <label for="est_professeur">Est Professeur :</label>
-                    <input type="checkbox" id="est_professeur" name="est_professeur" {% if est_professeur %} checked {% endif %}>
+                    <input type="checkbox" id="est_professeur" name="est_professeur">
+
 
                     <!-- Utiliser des cases à cocher pour les salles auxquelles l'utilisateur a accès -->
                     <label>Salles auxquelles l'utilisateur a accès :</label>
                     {% for salle in salles %}
                         <div>
-                            <label for="salle_{{ salle.Salle_id }}">{{ salle.numero }}</label>
-                            <input type="checkbox" id="salle_{{ salle.Salle_id }}" name="salles[]" value="{{ salle.Salle_id }}">
+                            <input type="checkbox" id="salle_{{ salle.salle_id }}" name="salles[]" value="{{ salle.salle_id }}">
+                            <label for="salle_{{ salle.salle_id }}">{{ salle.numero }}</label>
                         </div>
                     {% endfor %}
+
 
 
                     <button type="submit">Création compte</button>
