@@ -146,6 +146,25 @@ body {
     justify-content: space-between;
 }
 
+.box_products_salle {
+    width: calc(33.33% - 100px);
+    height: 120px;
+    margin: 25px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.373);
+    float: left;
+}
+
+.box_products_salle .des {
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
 .box_products h5 {
     margin-bottom: 5px;
 }

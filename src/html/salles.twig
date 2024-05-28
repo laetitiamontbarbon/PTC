@@ -11,11 +11,19 @@
 {% block content %}
     <div class="pro_container">
         {% for salle in salles %}
-                <div class="box_products white-box">
-                    <div class="des white-text">
-                        <h5 class="titre_utilisateur">{{ salle['Salle_id'] }} {{ salle['numero'] }}</h5>
-                    </div>
+            <div class="box_products_salle white-box">
+                <div class="des white-text">
+                    <h5 class="titre_utilisateur">{{ salle.numero }}</h5>
+                    <p class="white-text">Utilisateurs ayant accès à la salle: </p>
+                    <p class="white-text">
+                    <ul>
+                        {% for utilisateur in salle.utilisateurs %}
+                            <li>{{ utilisateur.nom }} {{ utilisateur.prenom }}</li>
+                        {% endfor %}
+                    </ul>
+                    </p>
                 </div>
-            {% endfor %}
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
