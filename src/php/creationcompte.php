@@ -110,9 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = "Erreur lors de la création du compte : " . $e->getMessage();
     }
 
-    echo $twig->render('creationcompte.twig', [
+    /*echo $twig->render('creationcompte.twig', [
         'message' => $message, // Passer le message à Twig
-    ]);
+    ]);*/
 
 }
 
